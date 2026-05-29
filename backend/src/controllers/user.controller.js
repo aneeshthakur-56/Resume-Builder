@@ -18,6 +18,14 @@ const generateToken = (user) =>
     },
   );
 
+// Cookie Options Helper
+const getCookieOptions = () => ({
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+});
+
 // Register User
 const registerUser = apiHandler(async (req, res) => {
   const { name, email, password } = req.body;
@@ -40,12 +48,7 @@ const registerUser = apiHandler(async (req, res) => {
   const token = generateToken(user);
 
   // Set cookie
-  res.cookie("token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-  });
+  res.cookie("token", token, getCookieOptions());
 
   return res.status(201).json(
     new ApiResponse(201, "Registration Successful", {
@@ -76,14 +79,31 @@ const loginUser = apiHandler(async (req, res) => {
   const token = generateToken(user);
 
   // Set cookie
-  res.cookie("token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-  });
+  res.cookie("token", token, getCookieOptions());
   user.password = undefined;
   return res.status(200).json(new ApiResponse(200, "Login Successful", user));
+});
+
+// Guest Demo Login
+const demoLoginUser = apiHandler(async (req, res) => {
+  const email = "demo@example.com";
+  let user = await User.findOne({ email });
+
+  if (!user) {
+    user = await User.create({
+      name: "Guest User",
+      email,
+      password: "Password123",
+    });
+  }
+
+  // Generate token
+  const token = generateToken(user);
+
+  // Set cookie
+  res.cookie("token", token, getCookieOptions());
+  user.password = undefined;
+  return res.status(200).json(new ApiResponse(200, "Demo Login Successful", user));
 });
 
 const getUserById = apiHandler(async (req, res) => {
@@ -95,7 +115,7 @@ const getUserById = apiHandler(async (req, res) => {
 });
 
 const logout  = apiHandler(async (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie("token", getCookieOptions());
   return res.status(200).json(new ApiResponse(200, "Logout Successful"));
 })
 
@@ -126,4 +146,4 @@ const updateUser = apiHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, "Profile updated successfully", user));
 });
 
-export { registerUser, loginUser, getUserById, logout, updateUser };
+export { registerUser, loginUser, getUserById, logout, updateUser, demoLoginUser };

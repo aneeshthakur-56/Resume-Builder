@@ -14,25 +14,7 @@ const Hero = () => {
   const handleDemoLogin = async () => {
     const toastId = toast.loading("Logging you in as a guest...");
     try {
-      const loginPayload = { email: "demo@example.com", password: "Password123" };
-      let res;
-      try {
-        res = await makeApiRequest("/api/users/login", "POST", loginPayload);
-      } catch (err) {
-        // If login failed, it might be because the account does not exist.
-        // Try to register it first.
-        const registerPayload = {
-          name: "Guest User",
-          email: "demo@example.com",
-          password: "Password123"
-        };
-        const regRes = await makeApiRequest("/api/users/register", "POST", registerPayload);
-        if (regRes && regRes.success) {
-          res = await makeApiRequest("/api/users/login", "POST", loginPayload);
-        } else {
-          throw err;
-        }
-      }
+      const res = await makeApiRequest("/api/users/demo", "POST");
       
       if (res && res.success) {
         toast.dismiss(toastId);

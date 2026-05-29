@@ -15,6 +15,7 @@ import {
   logout,
   registerUser,
   updateUser,
+  demoLoginUser,
 } from "../controllers/user.controller.js";
 
 const router = Router();
@@ -24,6 +25,9 @@ router.post("/register", registerValidation, validate, registerUser);
 
 // Login
 router.post("/login", loginValidation, validate, loginUser);
+
+// Guest Demo Login
+router.post("/demo", demoLoginUser);
 
 // Protected Route
 router.get("/data", authUser, getUserById);
