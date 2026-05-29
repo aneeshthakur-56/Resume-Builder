@@ -159,7 +159,7 @@ const Hero = () => {
       <div className="pb-10 md:pb-16">
         {/* Navbar */}
         <nav className="z-50 flex items-center justify-between w-full py-4 px-6 md:px-6 lg:px-16 xl:px-40 text-sm">
-          <a href="https://prebuiltui.com">
+          <a href="/">
             <img
               src="/logo.svg"
               alt="logo"
