@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { User, Mail, Shield, Save, KeyRound } from "lucide-react";
 import { makeApiRequest } from "../utils/apiService";
 import { login } from "../app/features/authSlice";
@@ -8,7 +9,15 @@ import toast from "react-hot-toast";
 const Settings = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("profile");
+  
+  useEffect(() => {
+    if (user?.email === "demo@example.com") {
+      toast.error("Settings are disabled in guest mode.");
+      navigate("/app", { replace: true });
+    }
+  }, [user, navigate]);
   
   const [profileForm, setProfileForm] = useState({
     name: user?.name || "",
