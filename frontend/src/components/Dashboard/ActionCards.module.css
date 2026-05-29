@@ -1,0 +1,150 @@
+.dashActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.4s 0.08s ease both;
+}
+@media (max-width: 540px) {
+  .dashActions {
+    grid-template-columns: 1fr;
+  }
+}
+
+.actionCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  padding: clamp(1.25rem, 4vw, 1.75rem);
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.actionCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+.actionCard:active {
+  transform: translateY(-1px);
+}
+
+.upload {
+  background: #fff;
+  border-color: #e2e8f0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+.dragOver {
+  border-color: #16a34a;
+  background: #f0fdf4;
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.1);
+}
+
+.create {
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.3);
+}
+.create:hover {
+  box-shadow: 0 14px 36px rgba(22, 163, 74, 0.38);
+}
+.create::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  right: -30px;
+  bottom: -40px;
+}
+.create::before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  right: 40px;
+  bottom: 20px;
+}
+
+.actionIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.greenLight {
+  background: #dcfce7;
+}
+.whiteLight {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.actionLabel {
+  font-size: clamp(0.9375rem, 2.5vw, 1.0625rem);
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+.upload .actionLabel {
+  color: #0f172a;
+}
+.create .actionLabel {
+  color: #fff;
+}
+
+.actionDesc {
+  font-size: 0.775rem;
+  line-height: 1.5;
+  margin-top: 0.2rem;
+  font-family: "Poppins", sans-serif;
+}
+.upload .actionDesc {
+  color: #6b7280;
+}
+.create .actionDesc {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.actionCta {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  transition: gap 0.2s;
+}
+.upload .actionCta {
+  color: #16a34a;
+}
+.create .actionCta {
+  color: #fff;
+}
+.actionCta:hover {
+  gap: 0.6rem;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

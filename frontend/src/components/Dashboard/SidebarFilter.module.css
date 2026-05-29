@@ -1,0 +1,143 @@
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.25rem;
+  position: sticky;
+  top: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  animation: fadeUp 0.3s ease both;
+}
+
+/* Modifiers for when the component acts as a mobile dropdown */
+.mobileSidebar {
+  width: 100%;
+  position: static;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  background: #f8fafc;
+}
+
+.sidebarTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.sidebarHr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 1.25rem 0;
+}
+
+.fpLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.fpChips {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.fpChip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.15s;
+  width: 100%;
+}
+.fpChip:hover {
+  border-color: #16a34a;
+  background: #f8fafc;
+}
+.fpChipActive {
+  border-color: #16a34a;
+  background: #f0fdf4;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.fpSortList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.fpSortItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: none;
+  background: none;
+  font-size: 0.8125rem;
+  font-family: "Poppins", sans-serif;
+  color: #374151;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s;
+  text-align: left;
+}
+.fpSortItem:hover {
+  background: #e2e8f0;
+}
+.fpSortItemActive {
+  background: #dcfce7;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.fpReset {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: #f1f5f9;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  text-align: center;
+  transition:
+    color 0.15s,
+    background 0.15s;
+  margin-top: 1.25rem;
+}
+.fpReset:hover {
+  color: #dc2626;
+  background: #fef2f2;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

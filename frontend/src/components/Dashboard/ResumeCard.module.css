@@ -1,0 +1,171 @@
+.rCard {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s,
+    border-color 0.2s;
+  animation: fadeUp 0.35s ease both;
+  font-family: "Poppins", sans-serif;
+}
+.rCard:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  border-color: #bbf7d0;
+}
+.rCardTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.rCardIcon {
+  width: 40px;
+  height: 40px;
+  background: #f0fdf4;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.rCardInfo {
+  flex: 1;
+  min-width: 0;
+}
+.rCardTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+.rCardMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.25rem;
+  font-size: 0.7rem;
+  color: #9ca3af;
+}
+.rDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: #d1d5db;
+}
+.rCardScore {
+  flex-shrink: 0;
+}
+
+.rIconBtn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #9ca3af;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.rIconBtn:hover {
+  background: #f1f5f9;
+  color: #374151;
+}
+
+.rMenu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  min-width: 140px;
+  overflow: hidden;
+  z-index: 50;
+  animation: fadeUp 0.15s ease both;
+}
+.rMenuItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.6rem 0.875rem;
+  border: none;
+  background: none;
+  font-size: 0.8125rem;
+  font-family: "Poppins", sans-serif;
+  color: #374151;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+.rMenuItem:hover {
+  background: #f8fafc;
+}
+.rMenuItemDanger {
+  color: #dc2626;
+}
+.rMenuItemDanger:hover {
+  background: #fef2f2;
+}
+.rMenuDivider {
+  height: 1px;
+  background: #f1f5f9;
+  margin: 0;
+}
+
+.rCardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 3px 10px;
+}
+.rEditBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: #16a34a;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  transition: gap 0.2s;
+}
+.rEditBtn:hover {
+  gap: 0.5rem;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
